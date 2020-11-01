@@ -54,6 +54,12 @@ namespace LoginService
 
             return (login, pass);
         }
+
+        /// <summary>
+        /// Funkcja sprawdzajaca czy nazwa uzytkownika nie jest juz zajeta
+        /// </summary>
+        /// <param name="login">Login uzytkownika</param>
+        /// <returns>True jesli nazwa zajeta i false jesli jest dostepna</returns>
         public static bool DoesUserExists(string login)
         {
             string temp;
@@ -68,6 +74,13 @@ namespace LoginService
             }
             return false;
         }
+
+        /// <summary>
+        /// Funkcja sprawdzajaca poprawnosc loginu i hasla w trakcie logowania
+        /// </summary>
+        /// <param name="login">Login uzytkownika</param>
+        /// <param name="password">Haslo uzytkownika</param>
+        /// <returns>True jesli dane logowania sa poprawne, false jesli sa bledne</returns>
         public static bool LoggingIn(string login, string password)
         {
             string temp;
@@ -83,6 +96,10 @@ namespace LoginService
             }
             return false;
         }
+        /// <summary>
+        /// Funkcja zajmuajca sie logowaniem uzytkownika, wysyla wiadomosci do uzytkownika oraz rozpatruje jego odpowiedz
+        /// </summary>
+        /// <param name="stream">strumien klienta</param>
         public static void LoginHandle(NetworkStream stream)
         {
             byte[] buffer = new byte[_data_length];
@@ -112,6 +129,10 @@ namespace LoginService
 
         }
 
+        /// <summary>
+        /// Funkcja zajmujaca sie rejestrowaniem uzytkownika, wysyla wiadomosci do uzyktownika oraz rozpatruje jego odpowiedz
+        /// </summary>
+        /// <param name="stream">strumien klienta</param>
         public static void RegisterHandle(NetworkStream stream)
         {
             byte[] buffer = new byte[_data_length];

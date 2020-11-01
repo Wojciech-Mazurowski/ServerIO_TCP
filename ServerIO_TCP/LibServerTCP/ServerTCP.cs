@@ -19,6 +19,11 @@ namespace LibServerTCP
         byte[] buffer;
         int ReceivedDataLength;
 
+        /// <summary>
+        /// Konstruktor inicjalizujacy server
+        /// </summary>
+        /// <param name="ip">server ip</param>
+        /// <param name="port">server port</param>
         public ServerTCP(IPAddress ip, int port)
         {
             _ip = ip;
@@ -26,7 +31,9 @@ namespace LibServerTCP
             LoginServiceS.CheckFile();
         }
 
-
+        /// <summary>
+        /// Funckja pozwalajaca łączyć się klientom 
+        /// </summary>
         public void Start()
         {
             while (true)
@@ -37,17 +44,23 @@ namespace LibServerTCP
                 transmissionDelegate.BeginInvoke(_stream, TransmissionCallback, tcpClient);
             }
         }
-
+        /// <summary>
+        /// Funkcja zamykajaca polączenie z użytkownikiem
+        /// </summary>
+        /// <param name="ar"></param>
         private void TransmissionCallback(IAsyncResult ar)
         {
             TcpClient client = (TcpClient)ar.AsyncState;
             client.Close();
         }
-
+        /// <summary>
+        /// Funkcja odpowiadajaca za pierwszą wymiane danych z użytkownikiem, pytająca czy użytkownik chce sie zalogowac czy zarejestrowac
+        /// </summary>
+        /// <param name="stream">strumien klienta</param>
         private void BeginDataTransmission(NetworkStream stream)
         {
             buffer = new byte[_data_length];
-            string message = "Wpisz 1 aby sie zalogowac \r\n2 zeby sie zarejestrowac \r\n";
+            string message = "1. Zalguj sie\r\n2. Zarejestruj sie\r\n";
             string anwser;
             string login;
             string pass;
@@ -67,7 +80,7 @@ namespace LibServerTCP
                 }
                 else
                 {
-                    message = "Wpisz 1 aby sie zalogowac \r\n2 zeby sie zarejestrowac \r\n ";
+                    message = "1. Zalguj sie\r\n2. Zarejestruj sie\r\n";
                     stream.Write(Encoding.ASCII.GetBytes(message), 0, message.Length);
                 }
 
