@@ -118,12 +118,12 @@ namespace LoginService
                 } while ((mes = Encoding.ASCII.GetString(buffer, 0, ReceivedDataLength)) == "\r\n" || (mes = Encoding.ASCII.GetString(buffer, 0, ReceivedDataLength)) == "1");
 
 
-                message = "Udalo sie wylogowac zegnam\r\n";
+                message = "Udalo sie wylogowac zegnam\r\n\r\n";
                 stream.Write(Encoding.ASCII.GetBytes(message), 0, message.Length);
             }
             else
             {
-                message = "Nie udalo sie zalogowac :(\r\n";
+                message = "Nie udalo sie zalogowac :(\r\n\r\n";
                 stream.Write(Encoding.ASCII.GetBytes(message), 0, message.Length);
             }
 

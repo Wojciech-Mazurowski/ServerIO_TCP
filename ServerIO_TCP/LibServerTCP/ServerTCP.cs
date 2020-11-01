@@ -60,29 +60,31 @@ namespace LibServerTCP
         private void BeginDataTransmission(NetworkStream stream)
         {
             buffer = new byte[_data_length];
-            string message = "1. Zalguj sie\r\n2. Zarejestruj sie\r\n";
+          
             string anwser;
             string login;
             string pass;
-            stream.Write(Encoding.ASCII.GetBytes(message), 0, message.Length);
+            string message = "1. Zalguj sie\r\n2. Zarejestruj sie\r\n";
             while (true)
             {
-                ReceivedDataLength = stream.Read(buffer, 0, _data_length);
-                anwser = Encoding.ASCII.GetString(buffer, 0, ReceivedDataLength);
-                if (anwser == "1")
+                message = "1. Zalguj sie\r\n2. Zarejestruj sie\r\n";
+                stream.Write(Encoding.ASCII.GetBytes(message), 0, message.Length);
+                do
+                {
+                    ReceivedDataLength = stream.Read(buffer, 0, _data_length);
+                } while ((anwser = Encoding.ASCII.GetString(buffer, 0, ReceivedDataLength)) == "\r\n" || (anwser = Encoding.ASCII.GetString(buffer, 0, ReceivedDataLength)) == "\r");
+               
+               
+                if (anwser[0] == '1'|| anwser == "1\r\n")
                 {
 
                     LoginServiceS.LoginHandle(stream);
                 }
-                else if (anwser == "2")
+                else if (anwser[0] == '2'|| anwser == "2\r\n")
                 {
                     LoginServiceS.RegisterHandle(stream);
                 }
-                else
-                {
-                    message = "1. Zalguj sie\r\n2. Zarejestruj sie\r\n";
-                    stream.Write(Encoding.ASCII.GetBytes(message), 0, message.Length);
-                }
+
 
 
 
