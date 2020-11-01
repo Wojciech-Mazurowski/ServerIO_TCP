@@ -120,10 +120,14 @@ namespace LoginService
 
                 message = "Udalo sie wylogowac zegnam\r\n\r\n";
                 stream.Write(Encoding.ASCII.GetBytes(message), 0, message.Length);
+                message = "1. Zalguj sie\r\n2. Zarejestruj sie\r\n";
+                stream.Write(Encoding.ASCII.GetBytes(message), 0, message.Length);
             }
             else
             {
                 message = "Nie udalo sie zalogowac :(\r\n\r\n";
+                stream.Write(Encoding.ASCII.GetBytes(message), 0, message.Length);
+                message = "1. Zalguj sie\r\n2. Zarejestruj sie\r\n";
                 stream.Write(Encoding.ASCII.GetBytes(message), 0, message.Length);
             }
 
@@ -145,13 +149,16 @@ namespace LoginService
                 streamWriter.Close();
                 message = "Udalo sie zarejestrowac \r\n";
                 stream.Write(Encoding.ASCII.GetBytes(message), 0, message.Length);
+                message = "1. Zalguj sie\r\n2. Zarejestruj sie\r\n";
+                stream.Write(Encoding.ASCII.GetBytes(message), 0, message.Length);
             }
             else
             {
 
                 message = "Uzytkownik juz istnieje / wybierz inna nazwe \r\n";
                 stream.Write(Encoding.ASCII.GetBytes(message), 0, message.Length);
-
+                message = "1. Zalguj sie\r\n2. Zarejestruj sie\r\n";
+                stream.Write(Encoding.ASCII.GetBytes(message), 0, message.Length);
             }
         }
 

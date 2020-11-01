@@ -65,27 +65,30 @@ namespace LibServerTCP
             string login;
             string pass;
             string message = "1. Zalguj sie\r\n2. Zarejestruj sie\r\n";
+            message = "1. Zalguj sie\r\n2. Zarejestruj sie\r\n";
+            stream.Write(Encoding.ASCII.GetBytes(message), 0, message.Length);
             while (true)
             {
-                message = "1. Zalguj sie\r\n2. Zarejestruj sie\r\n";
-                stream.Write(Encoding.ASCII.GetBytes(message), 0, message.Length);
-                do
+                //do
+                //{
+                //    ReceivedDataLength = stream.Read(buffer, 0, _data_length);
+                //} while ((anwser = Encoding.ASCII.GetString(buffer, 0, ReceivedDataLength)) == "\r\n" || (anwser = Encoding.ASCII.GetString(buffer, 0, ReceivedDataLength)) == "\r");
+
+                while (stream.DataAvailable)
                 {
                     ReceivedDataLength = stream.Read(buffer, 0, _data_length);
-                } while ((anwser = Encoding.ASCII.GetString(buffer, 0, ReceivedDataLength)) == "\r\n" || (anwser = Encoding.ASCII.GetString(buffer, 0, ReceivedDataLength)) == "\r");
-               
-               
-                if (anwser[0] == '1'|| anwser == "1\r\n")
-                {
+                    anwser = Encoding.ASCII.GetString(buffer, 0, ReceivedDataLength);
 
-                    LoginServiceS.LoginHandle(stream);
+                    if (anwser[0] == '1')
+                    {
+
+                        LoginServiceS.LoginHandle(stream);
+                    }
+                    else if (anwser[0] == '2')
+                    {
+                        LoginServiceS.RegisterHandle(stream);
+                    }
                 }
-                else if (anwser[0] == '2'|| anwser == "2\r\n")
-                {
-                    LoginServiceS.RegisterHandle(stream);
-                }
-
-
 
 
             }
