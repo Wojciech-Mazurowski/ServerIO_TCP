@@ -46,10 +46,6 @@ namespace ServerComunication
             stream.Write(Encoding.ASCII.GetBytes(message), 0, message.Length);
             while (true)
             {
-                //do
-                //{
-                //    ReceivedDataLength = stream.Read(buffer, 0, _data_length);
-                //} while ((anwser = Encoding.ASCII.GetString(buffer, 0, ReceivedDataLength)) == "\r\n" || (anwser = Encoding.ASCII.GetString(buffer, 0, ReceivedDataLength)) == "\r");
 
                 while (stream.DataAvailable)
                 {

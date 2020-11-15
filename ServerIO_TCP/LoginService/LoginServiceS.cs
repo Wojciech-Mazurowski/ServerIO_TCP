@@ -143,7 +143,7 @@ namespace LoginService
             byte[] buffer = new byte[_data_length];
             string login, password;
             (login, password) = AskForLogin(stream);
-            if (!DoesUserExists(login))
+            if (!DoesUserExists(Cipher.Encrpyt(login))
             {
                 using var streamWriter = File.AppendText(FileName);
                 login = Cipher.Encrpyt(login);
