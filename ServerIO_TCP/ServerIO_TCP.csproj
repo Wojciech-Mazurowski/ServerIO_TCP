@@ -50,6 +50,10 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\ServerComunication\ServerComunication.csproj">
+      <Project>{AF64448A-E474-4DD4-94B3-AD2E1E69E669}</Project>
+      <Name>ServerComunication</Name>
+    </ProjectReference>
     <ProjectReference Include="LibServerTCP\LibServerTCP.csproj">
       <Project>{a2e0ca14-9fd1-49b0-bc52-dc924fe06a51}</Project>
       <Name>LibServerTCP</Name>

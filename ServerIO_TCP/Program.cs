@@ -5,8 +5,7 @@ using System.Net;
 using System.Text;
 using System.Threading.Tasks;
 using LibServerTCP;
-
-
+using ServerComunication;
 
 namespace serveratcp
 {
@@ -14,8 +13,8 @@ namespace serveratcp
     {
         static void Main(string[] args)
         {
-            ServerTCP server = new ServerTCP(IPAddress.Parse("127.0.0.1"), 6000);
-            server.Run();
+            ServerCommunication server = new ServerCommunication(IPAddress.Parse("127.0.0.1"), 6000);
+            server.Start();
 
         }
     }

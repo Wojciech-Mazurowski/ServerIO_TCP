@@ -9,7 +9,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LibServerTCP", "LibServerTC
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LoginService", "LoginService\LoginService.csproj", "{CA8F560C-836E-4789-8151-B5C50F010205}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Ciphering", "..\Ciphering\Ciphering.csproj", "{17C508F8-CEDA-49A1-98AF-5208FE42BCB5}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Ciphering", "..\Ciphering\Ciphering.csproj", "{17C508F8-CEDA-49A1-98AF-5208FE42BCB5}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ServerComunication", "..\ServerComunication\ServerComunication.csproj", "{AF64448A-E474-4DD4-94B3-AD2E1E69E669}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -33,6 +35,10 @@ Global
 		{17C508F8-CEDA-49A1-98AF-5208FE42BCB5}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{17C508F8-CEDA-49A1-98AF-5208FE42BCB5}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{17C508F8-CEDA-49A1-98AF-5208FE42BCB5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{AF64448A-E474-4DD4-94B3-AD2E1E69E669}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AF64448A-E474-4DD4-94B3-AD2E1E69E669}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AF64448A-E474-4DD4-94B3-AD2E1E69E669}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AF64448A-E474-4DD4-94B3-AD2E1E69E669}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
