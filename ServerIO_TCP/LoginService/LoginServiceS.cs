@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Ciphering;
+using System;
 using System.IO;
 using System.Net.Sockets;
 using System.Text;
@@ -89,7 +90,7 @@ namespace LoginService
             while ((temp = streamReader.ReadLine()) != null)
             {
                 string[] credentials = temp.Split(',');
-                if (login == credentials[0] && password == credentials[1])
+                if (login == Cipher.Decrypt(credentials[0]) && password == Cipher.Decrypt(credentials[1]))
                 {
                     return true;
                 }
@@ -145,6 +146,8 @@ namespace LoginService
             if (!DoesUserExists(login))
             {
                 using var streamWriter = File.AppendText(FileName);
+                login = Cipher.Encrpyt(login);
+                password = Cipher.Encrpyt(password);
                 streamWriter.WriteLine($"{login},{password}");
                 streamWriter.Close();
                 message = "Udalo sie zarejestrowac \r\n";
